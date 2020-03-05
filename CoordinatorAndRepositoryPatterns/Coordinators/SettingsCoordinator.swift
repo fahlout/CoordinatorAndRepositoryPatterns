@@ -28,6 +28,33 @@ class SettingsCoordinator: Coordinator {
     }
 }
 
+extension SettingsCoordinator {
+    /// Handles controller leave event and makes sure the appropriate actions are taken based on whether the controller is popped from nav stack, dismissed via swipe from modal or dismissed from a button while presented modally
+    /// - parameters:
+    ///     - type: Type of leaving controller.
+    ///     - removeCoordinatorFromParentOnPopOrModalSwipe: Whether or not to remove the coordinator from its parent when controller is popped or modal is swiped away.
+    ///     - controllerDidFinish: Handler to take any actions right before leavving controller disappears.
+    func handleLeavingController<T>(ofType type: T.Type, removeCoordinatorFromParentOnPopOrModalSwipe: Bool, controllerDidFinish: () -> Void) {
+        // This is called both when user navigates back out of leaving controller and when user taps the dismissing button (if any) to leave the leaving controller currently in a modal context
+        let isNavigationControllerPresentedModally = navigationController?.presentingViewController != nil
+        let isLeavingControllerLastOnNavigationStack = navigationController?.viewControllers.last is T
+        let isLeavingControllerSecondToLastOnNavigationStack = navigationController?.viewControllers.dropLast().last is T
+        
+        if isNavigationControllerPresentedModally && isLeavingControllerLastOnNavigationStack {
+            // Leaving controller is last on nav stack. Remove from parent coordinator and dismiss if modally presented.
+            parentCoordinator?.childDidFinish(self)
+            controllerDidFinish()
+            navigationController?.dismiss(animated: true)
+        } else if !isLeavingControllerSecondToLastOnNavigationStack && !isLeavingControllerLastOnNavigationStack {
+            // Leaving controller was popped or swiped to dimiss modal
+            if removeCoordinatorFromParentOnPopOrModalSwipe {
+                parentCoordinator?.childDidFinish(self)
+            }
+            controllerDidFinish()
+        }
+    }
+}
+
 extension SettingsCoordinator: SettingsViewControllerDelegate {
     func showSettingsDetails() {
         let settingsDetailsVC = SettingsDetailsViewController.instantiate()
@@ -40,19 +67,7 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
     }
     
     func leaveSettings() {
-        // This is called both when user navigates back out of settings and when user taps the done button (if any) to leave the settings page in a modal context
-        let isNavigationControllerPresentedModally = navigationController?.presentingViewController != nil
-        let isLeavingControllerLastOnNavigationStack = navigationController?.viewControllers.last is SettingsViewController
-        let isLeavingControllerSecondToLastOnNavigationStack = navigationController?.viewControllers.dropLast().last is SettingsViewController
-        
-        if isNavigationControllerPresentedModally && isLeavingControllerLastOnNavigationStack {
-            // Settings controller is last on nav stack. Remove from parent coordinator and dismiss if modally presented.
-            parentCoordinator?.childDidFinish(self)
-            print("if needed, save or update data here")
-            navigationController?.dismiss(animated: true)
-        } else if !isLeavingControllerSecondToLastOnNavigationStack && !isLeavingControllerLastOnNavigationStack {
-            // Settings was popped from nav stack, remove from parent coordinator
-            parentCoordinator?.childDidFinish(self)
+        handleLeavingController(ofType: SettingsViewController.self, removeCoordinatorFromParentOnPopOrModalSwipe: true) {
             print("if needed, save or update data here")
         }
     }
@@ -60,17 +75,7 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
 
 extension SettingsCoordinator: SettingsDetailsViewControllerDelegate {
     func leaveSettingsDetails() {
-        // Is modal and settings details is last on nav stack?
-        let isNavigationControllerPresentedModally = navigationController?.presentingViewController != nil
-        let isLeavingControllerLastOnNavigationStack = navigationController?.viewControllers.last is SettingsDetailsViewController
-        let isLeavingControllerSecondToLastOnNavigationStack = navigationController?.viewControllers.dropLast().last is SettingsDetailsViewController
-        
-        if isNavigationControllerPresentedModally && isLeavingControllerLastOnNavigationStack {
-            // Settings view controller is last on nav stack. Remove from parent coordinator and dismiss if modally presented.
-            parentCoordinator?.childDidFinish(self)
-            print("if needed, save or update data here")
-            navigationController?.dismiss(animated: true)
-        } else if !isLeavingControllerSecondToLastOnNavigationStack && !isLeavingControllerLastOnNavigationStack {
+        handleLeavingController(ofType: SettingsDetailsViewController.self, removeCoordinatorFromParentOnPopOrModalSwipe: false) {
             print("do something when settings details are popped from nav stack")
         }
     }
