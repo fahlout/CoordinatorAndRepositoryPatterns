@@ -13,8 +13,9 @@ class SettingsCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController?
     
-    init(navigationController: UINavigationController?) {
+    init(navigationController: UINavigationController?, parentCoordinator: CoordinatorParent?) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func start() {

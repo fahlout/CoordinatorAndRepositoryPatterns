@@ -35,8 +35,7 @@ extension AccountCoordinator: CoordinatorParent {
 
 extension AccountCoordinator: AccountViewControllerDelegate {
     func showSettings() {
-        let child = SettingsCoordinator(navigationController: navigationController)
-        child.parentCoordinator = self
+        let child = SettingsCoordinator(navigationController: navigationController, parentCoordinator: self)
         childCoordinators.append(child)
         child.start()
     }

@@ -35,8 +35,7 @@ extension FeedCoordinator: CoordinatorParent {
 extension FeedCoordinator: FeedViewControllerDelegate {
     func showSettings() {
         let childNavigationController = UINavigationController()
-        let child = SettingsCoordinator(navigationController: childNavigationController)
-        child.parentCoordinator = self
+        let child = SettingsCoordinator(navigationController: childNavigationController, parentCoordinator: self)
         childCoordinators.append(child)
         child.start()
         
