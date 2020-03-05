@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CoordinatorAndRepositoryPatterns" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yBY-wU-fMM">
+                                <rect key="frame" x="169" y="413" width="76" height="70.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ay-sS-L93">
+                                        <rect key="frame" x="15" y="0.0" width="46" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk0-bg-Ru6">
+                                        <rect key="frame" x="0.0" y="40.5" width="76" height="30"/>
+                                        <state key="normal" title="Go to Feed"/>
+                                        <connections>
+                                            <action selector="goToFeed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O1g-R6-gOc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yBY-wU-fMM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="499-B6-aVk"/>
+                            <constraint firstItem="yBY-wU-fMM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GIB-z2-LFX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="138"/>
+        </scene>
+        <!--Feed View Controller-->
+        <scene sceneID="Ltf-et-X39">
+            <objects>
+                <viewController storyboardIdentifier="FeedViewController" id="7CV-NM-WZ7" customClass="FeedViewController" customModule="CoordinatorAndRepositoryPatterns" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JPT-yD-7uV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l1j-Qn-TME">
+                                <rect key="frame" x="158" y="413" width="98" height="70.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIz-hN-Bb6">
+                                        <rect key="frame" x="30" y="0.0" width="38.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4P-Ha-j0m">
+                                        <rect key="frame" x="0.0" y="40.5" width="98" height="30"/>
+                                        <state key="normal" title="Go to Settings"/>
+                                        <connections>
+                                            <action selector="goToFeed:" destination="7CV-NM-WZ7" eventType="touchUpInside" id="iPU-bh-RBY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="l1j-Qn-TME" firstAttribute="centerX" secondItem="JPT-yD-7uV" secondAttribute="centerX" id="hd8-ke-Zu4"/>
+                            <constraint firstItem="l1j-Qn-TME" firstAttribute="centerY" secondItem="JPT-yD-7uV" secondAttribute="centerY" id="pBi-vw-eyn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GBV-b8-G9h"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xOq-bT-0iW" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="138"/>
+        </scene>
+        <!--Account View Controller-->
+        <scene sceneID="XYc-Yr-NEd">
+            <objects>
+                <viewController storyboardIdentifier="AccountViewController" id="tNY-nX-cJk" customClass="AccountViewController" customModule="CoordinatorAndRepositoryPatterns" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yRS-hj-oyD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oaG-WM-oh8">
+                                <rect key="frame" x="158" y="413" width="98" height="70.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tca-SJ-OPQ">
+                                        <rect key="frame" x="17.5" y="0.0" width="63.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fJ-4M-PcG">
+                                        <rect key="frame" x="0.0" y="40.5" width="98" height="30"/>
+                                        <state key="normal" title="Go to Settings"/>
+                                        <connections>
+                                            <action selector="didTapSettings:" destination="tNY-nX-cJk" eventType="touchUpInside" id="6py-M6-cbR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oaG-WM-oh8" firstAttribute="centerX" secondItem="yRS-hj-oyD" secondAttribute="centerX" id="9Id-Dq-cmq"/>
+                            <constraint firstItem="oaG-WM-oh8" firstAttribute="centerY" secondItem="yRS-hj-oyD" secondAttribute="centerY" id="D5u-55-aLi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hFT-sU-Asw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gsS-rL-Ztv" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1735" y="138"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="ira-gS-MVQ">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="u5X-1X-jxC" customClass="SettingsViewController" customModule="CoordinatorAndRepositoryPatterns" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YGW-Lc-OSb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bY5-2f-CGI">
+                                <rect key="frame" x="162.5" y="413" width="89" height="70.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHP-Oc-G4J">
+                                        <rect key="frame" x="13" y="0.0" width="63.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap4-60-PnS">
+                                        <rect key="frame" x="0.0" y="40.5" width="89" height="30"/>
+                                        <state key="normal" title="Go to Details"/>
+                                        <connections>
+                                            <action selector="didTapDetailsButton:" destination="u5X-1X-jxC" eventType="touchUpInside" id="VG3-Tb-ZbJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bY5-2f-CGI" firstAttribute="centerY" secondItem="YGW-Lc-OSb" secondAttribute="centerY" id="TVk-Km-dYA"/>
+                            <constraint firstItem="bY5-2f-CGI" firstAttribute="centerX" secondItem="YGW-Lc-OSb" secondAttribute="centerX" id="elr-eE-xqu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lPS-u8-acX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ona-rB-foV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2539" y="138"/>
+        </scene>
+        <!--Settings Details View Controller-->
+        <scene sceneID="Z49-r3-v1l">
+            <objects>
+                <viewController storyboardIdentifier="SettingsDetailsViewController" id="yxH-i4-DbS" customClass="SettingsDetailsViewController" customModule="CoordinatorAndRepositoryPatterns" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s6A-bF-LYL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WOi-Ka-zsb">
+                                <rect key="frame" x="147" y="438" width="120" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eco-1w-wh2">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WOi-Ka-zsb" firstAttribute="centerX" secondItem="s6A-bF-LYL" secondAttribute="centerX" id="NzU-55-z2E"/>
+                            <constraint firstItem="WOi-Ka-zsb" firstAttribute="centerY" secondItem="s6A-bF-LYL" secondAttribute="centerY" id="e2Z-Xg-dXK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IFU-Er-TTL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dBy-ej-qlU" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3301" y="138"/>
+        </scene>
+    </scenes>
+</document>
