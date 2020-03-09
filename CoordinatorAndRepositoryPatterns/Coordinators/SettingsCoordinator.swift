@@ -66,17 +66,29 @@ extension SettingsCoordinator: SettingsViewControllerDelegate {
         navigationController?.pushViewController(settingsDetailsVC, animated: true)
     }
     
-    func leaveSettings() {
+    func settingsWillDisappear() {
         handleLeavingController(ofType: SettingsViewController.self, removeCoordinatorFromParentOnPopOrModalSwipe: true) {
             print("if needed, save or update data here")
+        }
+    }
+    
+    func shouldCloseSettings() {
+        handleLeavingController(ofType: SettingsViewController.self, removeCoordinatorFromParentOnPopOrModalSwipe: true) {
+            print("if needed, save or update data here when user taps done button")
         }
     }
 }
 
 extension SettingsCoordinator: SettingsDetailsViewControllerDelegate {
-    func leaveSettingsDetails() {
+    func settingsDetailsWillDisappear() {
         handleLeavingController(ofType: SettingsDetailsViewController.self, removeCoordinatorFromParentOnPopOrModalSwipe: false) {
             print("do something when settings details are popped from nav stack")
+        }
+    }
+    
+    func shouldCloseSettingsDetails() {
+        handleLeavingController(ofType: SettingsDetailsViewController.self, removeCoordinatorFromParentOnPopOrModalSwipe: false) {
+            print("do something when settings details are closed from done button")
         }
     }
 }

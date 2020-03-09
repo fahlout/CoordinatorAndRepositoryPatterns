@@ -9,7 +9,8 @@
 import UIKit
 
 protocol SettingsDetailsViewControllerDelegate: AnyObject {
-    func leaveSettingsDetails()
+    func settingsDetailsWillDisappear()
+    func shouldCloseSettingsDetails()
 }
 
 class SettingsDetailsViewController: UIViewController, StoryboardInstantiable {
@@ -29,11 +30,11 @@ class SettingsDetailsViewController: UIViewController, StoryboardInstantiable {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.leaveSettingsDetails()
+        delegate?.settingsDetailsWillDisappear()
     }
     
     @objc func exitSettings() {
-        delegate?.leaveSettingsDetails()
+        delegate?.shouldCloseSettingsDetails()
     }
     
     func showDoneButton() {
